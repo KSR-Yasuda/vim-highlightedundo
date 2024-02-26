@@ -35,8 +35,15 @@ let s:SID = printf("\<SNR>%s_", s:SID())
 delfunction s:SID
 "}}}
 
-function! highlightedundo#highlight#new() abort  "{{{
-  return deepcopy(s:highlight)
+function! highlightedundo#highlight#new(...) abort  "{{{
+  let highlight = deepcopy(s:highlight)
+
+  if a:0 > 0
+    let region = a:1
+    call highlight.add(region)
+  endif
+
+  return highlight
 endfunction "}}}
 
 " s:highlight "{{{
