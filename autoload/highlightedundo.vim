@@ -509,7 +509,7 @@ function! s:blink(difflist, duration) abort "{{{
       if filter(copy(subdiff.lines), '!empty(v:val)') == []
         continue
       endif
-      let h = highlightedundo#highlight#new(subdiff.region)
+      let h = highlightedundo#highlight#new()
       call h.show('HighlightedundoDelete')
       call add(highlightlist, h)
     endfor
